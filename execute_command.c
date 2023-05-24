@@ -7,7 +7,7 @@
 void execute_me(char **argv)
 {
 char *command = NULL;
-char *envp[] = {"PATH=/usr/bin", NULL};
+/*char *envp[] = {"PATH=/usr/bin", NULL};*/
 command = argv[0];
 if (execve(command, argv, NULL) == -1)
 {

@@ -8,16 +8,14 @@ int main(void)
 char *line = NULL;
 char *dollar = "$ ";
 char **str;
-char *str_tokend = NULL;
 size_t len;
 ssize_t nread;
-int i = 0;
 int flag = 0;
 while (1 && flag == 0)
 {
 if (isatty(STDIN_FILENO == 0))
 {
-flag == 1;
+
 }
 write(STDOUT_FILENO, dollar, 2);
 nread = getline(&line, &len, stdin);
