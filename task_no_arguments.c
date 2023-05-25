@@ -43,5 +43,6 @@ else
 waitpid(pid, &status, 0);
 }
 }
+free(line);
 return (0);
 }
