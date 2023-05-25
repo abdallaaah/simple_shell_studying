@@ -15,7 +15,7 @@ int main(void)
 {
 char *args[2];
 char *line = NULL;
-char *dollar = "$ ";
+char *dollar = "#cisfun$ ";
 int status;
 size_t len;
 ssize_t nread;
