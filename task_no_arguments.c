@@ -34,7 +34,7 @@ break;
 }
 if (strcmp(array[0], "exit") == 0)
 {
-break;
+exit(0);
 }
 execute_me(array, dot);
 }
