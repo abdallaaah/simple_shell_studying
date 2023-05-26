@@ -2,7 +2,9 @@
 /**
  * execute_me - execute the commands
  * @argv: the tokinezed string hold the command from std input
- * Return: void and dont return any thing
+ * @dot: carry the name of the bash
+ * @handle: flag to know where is the input
+ * Return: void
  */
 void execute_me(char **argv, char *dot, int handle)
 {
@@ -12,10 +14,6 @@ char *arge[2];
 arge[0] = argv[0];
 arge[1] = NULL;
 pid = fork();
-/*while (argv)
-{
-count++;
-}*/
 if (pid == -1)
 {
 perror("fork error");
