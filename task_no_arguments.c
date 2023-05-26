@@ -24,13 +24,20 @@ nread = getline(&line, &len, stdin);
 if (line[nread - 1] == '\n')
 line[nread - 1] = '\0';
 if (nread == -1 && handle == 0)
-perror("Error in the getline function"), free(line), exit(EXIT_FAILURE);
+{
+perror("Error in the getline function");
+free(line);
+exit(EXIT_FAILURE);
+}
 array = split_to_array(line);
+if (array == NULL)
+{
+free(array);
+return (0);
+}
 if (strcmp(array[0], "env") == 0)
 {
-handle = 1;
 print_env();
-break;
 }
 if (strcmp(array[0], "exit") == 0)
 {
