@@ -7,13 +7,12 @@
  */
 int main(int argc, char *argv[])
 {
-char *args[2];
 char *line = NULL, *dot = NULL;
 char *dollar = "#cisfun$ ";
-int status, handle = 0;
+int handle = 0;
 size_t len;
 ssize_t nread;
-pid_t pid;
+char **array;
 dot = argv[0];
 while (1 && handle == 0 && argc)
 {
@@ -26,22 +25,14 @@ if (line[nread - 1] == '\n')
 line[nread - 1] = '\0';
 if (nread == -1 && handle == 0)
 perror("Error in the getline function"), free(line), exit(EXIT_FAILURE);
-args[0] = line, args[1] = NULL, pid = fork();
-if (pid == -1)
+array = split_to_array(line);
+if (strcmp(array[0], "env") == 0)
 {
-perror("fork error"), exit(EXIT_FAILURE);
+handle = 1;
+print_env();
+break;
 }
-else if (pid == 0)
-{
-if (execve(args[0], args, environ) == -1)
-{
-perror(dot), exit(EXIT_FAILURE);
-}
-}
-else
-{
-waitpid(pid, &status, 0);
-}
+execute_me(array, dot);
 }
 free(line);
 return (0);
