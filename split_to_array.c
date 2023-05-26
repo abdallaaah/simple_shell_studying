@@ -1,16 +1,16 @@
 #include "lists.h"
 /**
  * split_to_array - it used for spliting the line from main to tokenz in array
- * @line: the line by user from the standard input
- * Return: tokeinzed array of strinput
+ * @line: the line by user input
+ * @count: the line count
+ * Return: the array
  */
-char **split_to_array(char *line)
+char **split_to_array(char *line, int count, int *result_count)
 {
 char *token = NULL, *token_2 = NULL;
 char *line_2 = NULL;
 char **sttr = NULL;
 int i = 0;
-int count = 0;
 line_2 = malloc(strlen(line) + 1);
 if (line_2 == NULL)
 {
@@ -32,7 +32,10 @@ sttr[i] = malloc(strlen(token_2) + 1);
 strcpy(sttr[i], token_2);
 token_2 = strtok(NULL, " ");
 }
+*result_count = count;
 sttr[i] = NULL;
 free(line_2);
+line_2 = NULL;
+token = NULL;
 return (sttr);
 }

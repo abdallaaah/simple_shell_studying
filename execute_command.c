@@ -6,22 +6,22 @@
  * @handle: flag to know where is the input
  * Return: void
  */
-void execute_me(char **argv, char *dot, int handle)
+void execute_me(char **argv, char *dot, int handle, int count)
 {
 pid_t pid;
 int status;
-char *arge[2];
+/*char *arge[2];
 arge[0] = argv[0];
-arge[1] = NULL;
+arge[1] = NULL;*/
 pid = fork();
 if (pid == -1)
 {
 perror("fork error");
 exit(EXIT_FAILURE);
 }
-else if (pid == 0)
+else if (pid == 0 && count)
 {
-if (execve(arge[0], arge, environ) == -1 && handle == 0)
+if (execve(argv[0], argv, environ) == -1 && handle == 0)
 {
 perror(dot);
 exit(EXIT_FAILURE);

@@ -12,6 +12,7 @@ char *dollar = "#cisfun$ ";
 int handle = 0;
 size_t len = 0;
 ssize_t nread = 0;
+int count = 0;
 char **array = NULL;
 dot = argv[0];
 while (1 && handle == 0 && argc)
@@ -29,7 +30,7 @@ perror("Error in the getline function");
 free(line);
 exit(EXIT_FAILURE);
 }
-array = split_to_array(line);
+array = split_to_array(line, count, &count);
 if (strcmp(array[0], "env") == 0)
 {
 print_env();
@@ -38,7 +39,7 @@ if (strcmp(array[0], "exit") == 0)
 {
 exit(0);
 }
-execute_me(array, dot, handle);
+execute_me(array, dot, handle, count);
 }
 free(line);
 return (0);
