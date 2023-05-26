@@ -32,6 +32,10 @@ handle = 1;
 print_env();
 break;
 }
+if (strcmp(array[0], "exit") == 0)
+{
+break;
+}
 execute_me(array, dot);
 }
 free(line);
