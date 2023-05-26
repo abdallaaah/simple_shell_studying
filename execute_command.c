@@ -4,7 +4,7 @@
  * @argv: the tokinezed string hold the command from std input
  * Return: void and dont return any thing
  */
-void execute_me(char **argv, char *dot)
+void execute_me(char **argv, char *dot, int handle)
 {
 pid_t pid;
 int status;
@@ -23,7 +23,7 @@ exit(EXIT_FAILURE);
 }
 else if (pid == 0)
 {
-if (execve(arge[0], arge, environ) == -1)
+if (execve(arge[0], arge, environ) == -1 && handle == 0)
 {
 perror(dot);
 exit(EXIT_FAILURE);

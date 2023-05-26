@@ -37,13 +37,14 @@ return (0);
 }
 if (strcmp(array[0], "env") == 0)
 {
+handle = 1;
 print_env();
 }
 if (strcmp(array[0], "exit") == 0)
 {
 exit(0);
 }
-execute_me(array, dot);
+execute_me(array, dot, handle);
 }
 free(line);
 return (0);
