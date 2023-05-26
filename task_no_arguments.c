@@ -37,7 +37,6 @@ return (0);
 }
 if (strcmp(array[0], "env") == 0)
 {
-handle = 1;
 print_env();
 }
 if (strcmp(array[0], "exit") == 0)
