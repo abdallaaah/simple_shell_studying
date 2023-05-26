@@ -10,8 +10,8 @@ char *token = NULL, *token_2 = NULL;
 char *line_2 = NULL;
 char **sttr = NULL;
 int i = 0;
-int count = 1;
-line_2 = malloc(strlen(line));
+int count = 0;
+line_2 = malloc(strlen(line) + 1);
 if (line_2 == NULL)
 {
 perror("(Error in malloc and memory size)");
@@ -24,11 +24,11 @@ while (token != NULL)
 count++;
 token = strtok(NULL, " ");
 };
-sttr = malloc(sizeof(char *) * count);
+sttr = malloc(sizeof(char *) * (count + 1));
 token_2 = strtok(line_2, " ");
 for (i = 0; token_2 != NULL; i++)
 {
-sttr[i] = malloc(sizeof(char) * (strlen(token_2)));
+sttr[i] = malloc(strlen(token_2) + 1);
 strcpy(sttr[i], token_2);
 token_2 = strtok(NULL, " ");
 }

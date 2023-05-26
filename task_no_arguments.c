@@ -10,9 +10,9 @@ int main(int argc, char *argv[])
 char *line = NULL, *dot = NULL;
 char *dollar = "#cisfun$ ";
 int handle = 0;
-size_t len;
-ssize_t nread;
-char **array;
+size_t len = 0;
+ssize_t nread = 0;
+char **array = NULL;
 dot = argv[0];
 while (1 && handle == 0 && argc)
 {
@@ -30,11 +30,6 @@ free(line);
 exit(EXIT_FAILURE);
 }
 array = split_to_array(line);
-if (array == NULL)
-{
-free(array);
-return (0);
-}
 if (strcmp(array[0], "env") == 0)
 {
 print_env();
