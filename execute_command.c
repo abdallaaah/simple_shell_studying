@@ -22,7 +22,7 @@ exit(EXIT_FAILURE);
 }
 else if (pid == 0 && count && handle == 0)
 {
-if (execve(argv[0], argv, environ) == -1 /*&& handle == 0*/)
+if (execve(argv[0], argv, environ) == -1 && handle != 1)
 {
 perror(dot);
 exit(EXIT_FAILURE);
@@ -30,7 +30,7 @@ exit(EXIT_FAILURE);
 }
 else if (pid == 0 && count && handle == 1)
 {
-if (execve(argv[0], argv, environ) == -1 /*&& handle == 0*/)
+if (execve(argv[0], argv, environ) == -1 && handle != 1)
 {
 perror(dot);
 exit(EXIT_FAILURE);
