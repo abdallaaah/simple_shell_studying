@@ -14,21 +14,35 @@ int status;
 arge[0] = argv[0];
 arge[1] = NULL;*/
 pid = fork();
+count = 5;
 if (pid == -1)
 {
 perror("fork error");
-exit(EXIT_FAILURE);
+/*exit(EXIT_FAILURE);*/
 }
-else if (pid == 0 && count)
+else if (pid == 0 && count && handle == 0)
 {
-if (execve(argv[0], argv, environ) == -1 && handle == 0)
+if (execve(argv[0], argv, environ) == -1 /*&& handle == 0*/)
 {
 perror(dot);
-exit(EXIT_FAILURE);
+/*exit(EXIT_FAILURE);*/
+}
+}
+else if (pid == 0 && count && handle == 1)
+{
+if (execve(argv[0], argv, environ) == -1 /*&& handle == 0*/)
+{
+perror(dot);
+/*exit(EXIT_FAILURE);*/
 }
 }
 else
 {
 waitpid(pid, &status, 0);
 }
+/*if (handle == 1)
+{
+printf("the argv is: %s\n",argv[0]);
+execve(argv[0], argv, environ);
+}*/
 }
