@@ -4,15 +4,14 @@
  * @argv: the tokinezed string hold the command from std input
  * @dot: carry the name of the bash
  * @handle: flag to know where is the input
- * Return: void
+ * @count: the count of argv
+ * Return: void no return
  */
 void execute_me(char **argv, char *dot, int handle, int count)
 {
 pid_t pid;
 int status;
-/*char *arge[2];
-arge[0] = argv[0];
-arge[1] = NULL;*/
+printf("the count is : %d\n", count);
 pid = fork();
 count = 5;
 if (pid == -1)
@@ -40,9 +39,4 @@ else
 {
 waitpid(pid, &status, 0);
 }
-/*if (handle == 1)
-{
-printf("the argv is: %s\n",argv[0]);
-execve(argv[0], argv, environ);
-}*/
 }
